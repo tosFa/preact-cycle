@@ -1,4 +1,4 @@
-import { h, render as doRender } from 'preact';
+import { h as hr, render as doRender } from 'preact';
 import Contextualize from './contextualize';
 import createCycle from './create-cycle';
 
@@ -13,10 +13,8 @@ function createRenderer(Renderable, parent) {
 	};
 }
 
-export default function render(Renderable, data, parent) {
+export const render = (Renderable, data, parent) => {
 	let renderer = createRenderer(Renderable, parent);
 	return createCycle(renderer, data);
 }
-
-render.render = render;
-render.h = h;
+export const h = hr;
